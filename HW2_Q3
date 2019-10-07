@@ -1,0 +1,53 @@
+##Homework 2, Question 3
+##a
+> plot(tractor$age, tractor$cost, pch=20, ylab="cost", xlab="age")
+##b
+> coefficients(linearMod)
+(Intercept)         age 
+   407.1170    116.3278 
+> tractor_line <- lm(cost ~ age, data=tractor)
+> abline(tractor_line, col="red")
+  ## Y = 116.3X+407.1
+> cor(tractor$age, tractor$cost)
+[1] 0.6111289
+> sd(tractor$age,na.rm = FALSE)
+[1] 1.994017
+> sd(tractor$cost, na.rm=FALSE)
+[1] 379.5591
+> summary(tractor)
+      age             cost     
+ Min.   :0.500   Min.   : 163  
+ 1st Qu.:1.000   1st Qu.: 549  
+ Median :4.000   Median : 764  
+ Mean   :3.412   Mean   : 804  
+ 3rd Qu.:5.000   3rd Qu.:1033  
+ Max.   :6.000   Max.   :1522 
+ > 0.6111289*(379.5591/1.994017)
+[1] 116.3278
+> 804-(116.3278*3.412)
+[1] 407.0895
+  ## Y=116.3X + 407.1
+##c
+> 116.3*(3) + 407.1
+[1] 756
+
+> Xa <- data.frame(size=c(mean(tractor$cost), 2.5, max(tractor$cost)))
+> cbind(Xa$age, predict(tractor_line, newdata = Xa$age, interval = "predict"))
+    fit        lwr      upr
+1   930.5920  244.10375 1617.080
+2   697.9364   13.21786 1382.655
+3   697.9364   13.21786 1382.655
+4   872.4281  190.15035 1554.706
+5   872.4281  190.15035 1554.706
+6   872.4281  190.15035 1554.706
+7   988.7559  295.59864 1681.913
+8   988.7559  295.59864 1681.913
+9  1046.9198  344.70506 1749.135
+10  988.7559  295.59864 1681.913
+11  465.2809 -256.81046 1187.372
+12  465.2809 -256.81046 1187.372
+13 1105.0837  391.51395 1818.653
+14 1105.0837  391.51395 1818.653
+15  523.4448 -185.86143 1232.751
+16  523.4448 -185.86143 1232.751
+17  523.4448 -185.86143 1232.751
